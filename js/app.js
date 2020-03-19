@@ -73,3 +73,5 @@ function mostrarNotificacion(mensaje, clase) {
         }, 3000);
     }, 100);
 }
+
+texto aadadasa
