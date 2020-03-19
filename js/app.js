@@ -69,7 +69,6 @@ function mostrarNotificacion(mensaje, clase) {
             notificacion.classList.remove('visible');
             setTimeout(() => {
                 notificacion.remove();
-                adad
             }, 4000);
         }, 3000);
     }, 100);
