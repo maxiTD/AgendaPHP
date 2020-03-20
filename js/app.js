@@ -50,7 +50,7 @@ function insertarBD(datos) {
     //pasar los datos
     xhr.onload = function() {
         if (this.status === 200) {
-            //console.log(JSON.parse(xhr.responseText));
+            console.log(JSON.parse(xhr.responseText));
             //se lee la respuesta de php
             const respuesta = JSON.parse(xhr.responseText);
             console.log(respuesta.empresa);

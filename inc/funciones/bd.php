@@ -5,8 +5,8 @@
     define('DB_HOST', 'localhost');
     define('DB_NOMBRE', 'agendaphp');
 
-    $conn = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NOMBRE);//iria un 5to parámetro, el PUERTO. en caso de sque por defecto quiera buscar en algun otro.
+    $conn = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NOMBRE);//iría un 5to parámetro, el PUERTO. en caso de que por defecto quiera buscar en algun otro.
     
     //prueba de conexion
-    //echo $conn->ping(); 
+    echo $conn->ping(); 
 ?>
