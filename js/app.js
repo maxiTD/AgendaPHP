@@ -49,8 +49,6 @@ function insertarBD(datos) {
     xhr.open('POST', 'inc/modelos/modelo-contactos.php', true);
     //pasar los datos
     xhr.onload = function() {
-        console.log("readyState= " + this.readyState);
-        console.log("status= " + this.status);
         if (this.status == 200) {
             console.log(JSON.parse(xhr.responseText));
             //se lee la respuesta de php
