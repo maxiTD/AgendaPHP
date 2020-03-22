@@ -8,8 +8,10 @@ function eventListeners() {
     //Cuando el formulario de crear o editar se ejecuta
     formularioContactos.addEventListener('submit', leerFormulario);
 
-    //Listener para eliminar el boton
-    listadoContactos.addEventListener('click', eliminarContacto);
+    //Listener para el boton eliminar
+    if (listadoContactos) {
+        listadoContactos.addEventListener('click', eliminarContacto);
+    }
 }
 
 function leerFormulario(e) {
