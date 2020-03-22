@@ -11,9 +11,6 @@
     $resultado = obtenerContacto($id);
     $contacto = $resultado->fetch_assoc();
 ?>
-    <pre>
-        <?php var_dump($contacto); ?>
-    </pre>
 
     <div class="contenedor-barra">
         <div class="contenedor barra">
