@@ -1,6 +1,7 @@
 
 const formularioContactos = document.querySelector('#contacto'),
-      listadoContactos = document.querySelector('#listado-contactos tbody');
+      listadoContactos = document.querySelector('#listado-contactos tbody'),
+      inputBuscador = document.querySelector('#buscar');
 
 eventListeners();
 
@@ -11,6 +12,12 @@ function eventListeners() {
     //Listener para el boton eliminar
     if (listadoContactos) {
         listadoContactos.addEventListener('click', eliminarContacto);
+        numeroContactos();
+    }
+
+    //Listener para el buscador
+    if (inputBuscador) {
+        inputBuscador.addEventListener('input', buscarContactos);
     }
 }
 
@@ -112,6 +119,9 @@ function insertarBD(datos) {
             
             //Mostrar notificacion
             mostrarNotificacion('Contacto Creado Correctamente', 'correcto');
+
+            //Actualizar el contador
+            numeroContactos();
         }
     }
     //enviar los datos
@@ -174,6 +184,9 @@ function eliminarContacto(e) {
 
                         //Mostrar notificacion
                         mostrarNotificacion('Contacto eliminado', 'correcto');
+                        
+                        //Actualizar el contador de contactos
+                        numeroContactos();
                     } else {
                         //Mostrar notificación
                         mostrarNotificacion('Hubo un error...', 'error');
@@ -207,4 +220,36 @@ function mostrarNotificacion(mensaje, clase) {
             }, 4000);
         }, 3000);
     }, 100);
+}
+
+//Busqueda de contactos
+function buscarContactos(e) {
+    const expresion = new RegExp(e.target.value, "i"),
+          registros = document.querySelectorAll('tbody tr');
+    
+    registros.forEach(registro => {
+        registro.style.display = 'none';
+
+        //console.log(registro.childNodes[1]);
+        if (registro.childNodes[1].textContent.replace(/\s/g, " ").search(expresion) != -1) {
+            registro.style.display = 'table-row';
+        }
+        //Actualizar el contador
+        numeroContactos();
+    })
+}
+
+//Contador de registros
+function numeroContactos() {
+    const totalContactos = document.querySelectorAll('tbody tr');
+          contenedorNumero = document.querySelector('.total-contactos span');
+
+    let total = 0;
+    totalContactos.forEach(contacto => {
+        if(contacto.style.display === '' || contacto.style.display === 'table-row') {
+            total++;
+        }
+    });
+    //console.log(total);
+    contenedorNumero.textContent = total;
 }
